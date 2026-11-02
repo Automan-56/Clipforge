@@ -74,9 +74,9 @@ ui = [
 clipforge = "clipforge.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/Automan-056/Clipforge"
-Repository = "https://github.com/Automan-056/Clipforge"
-Issues = "https://github.com/Automan-056/Clipforge/issues"
+Homepage = "https://github.com/Automan-56/Clipforge"
+Repository = "https://github.com/Automan-56/Clipforge"
+Issues = "https://github.com/Automan-56/Clipforge/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]

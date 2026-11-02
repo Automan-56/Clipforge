@@ -73,7 +73,7 @@ pip install -e .[ui]
 # Ajouter ffmpeg à votre PATH
 
 # Cloner le dépôt
-git clone https://github.com/Automan-056/Clipforge.git
+git clone https://github.com/Automan-56/Clipforge.git
 cd Clipforge
 
 # Installer en mode développement
