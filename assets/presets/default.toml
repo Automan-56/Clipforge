@@ -1,6 +1,7 @@
 # Preset par défaut - style classique karaoké
 [style]
-font = "Roboto-Bold"
+font = "Anton-Bold"
+fontsdir = "assets/fonts"
 size = 72
 primary_color = "&H00FFFFFF"
 highlight_color = "&H00FFFF"

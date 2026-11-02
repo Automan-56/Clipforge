@@ -200,8 +200,12 @@ def transcribe_project(
     # Déterminer le device
     device = settings.whisper_device
     if device == "auto":
-        import torch
-        device = "cuda" if torch.cuda.is_available() else "cpu"
+        try:
+            import ctranslate2
+            cuda_devices = ctranslate2.get_cuda_device_count()
+            device = "cuda" if cuda_devices > 0 else "cpu"
+        except Exception:
+            device = "cpu"
 
     # Déterminer le compute_type
     compute_type = "float16" if device == "cuda" else "int8"

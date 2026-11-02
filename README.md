@@ -31,6 +31,37 @@ Clone open-source, 100 % local et gratuit d'Opus Clip : transforme une vidéo lo
 - FFmpeg (avec ffprobe)
 - (Optionnel) CUDA pour GPU NVIDIA
 
+### Installation rapide
+
+```bash
+# Cloner le dépôt
+git clone https://github.com/Automan-56/Clipforge.git
+cd Clipforge
+
+# Installer en mode développement (inclut l'interface)
+pip install -e ".[dev,ui]"
+
+# Vérifier l'installation
+clipforge doctor
+```
+
+### Windows
+
+```bash
+# Installer FFmpeg via winget
+winget install Gyan.FFmpeg
+
+# Créer un environnement virtuel
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+
+# Installer clipforge
+pip install -e ".[dev,ui]"
+
+# Vérifier l'installation
+clipforge doctor
+```
+
 ### Linux
 
 ```bash
@@ -38,15 +69,15 @@ Clone open-source, 100 % local et gratuit d'Opus Clip : transforme une vidéo lo
 sudo apt update
 sudo apt install ffmpeg
 
-# Cloner le dépôt
-git clone https://github.com/yourusername/clipforge.git
-cd clipforge
+# Créer un environnement virtuel
+python -m venv .venv
+source .venv/bin/activate
 
-# Installer en mode développement
-pip install -e .[dev]
+# Installer clipforge
+pip install -e ".[dev,ui]"
 
-# Installer Streamlit pour l'interface (optionnel)
-pip install -e .[ui]
+# Vérifier l'installation
+clipforge doctor
 ```
 
 ### macOS
@@ -55,32 +86,15 @@ pip install -e .[ui]
 # Installer FFmpeg avec Homebrew
 brew install ffmpeg
 
-# Cloner le dépôt
-git clone https://github.com/yourusername/clipforge.git
-cd clipforge
+# Créer un environnement virtuel
+python -m venv .venv
+source .venv/bin/activate
 
-# Installer en mode développement
-pip install -e .[dev]
+# Installer clipforge
+pip install -e ".[dev,ui]"
 
-# Installer Streamlit pour l'interface (optionnel)
-pip install -e .[ui]
-```
-
-### Windows
-
-```bash
-# Installer FFmpeg depuis https://ffmpeg.org/download.html
-# Ajouter ffmpeg à votre PATH
-
-# Cloner le dépôt
-git clone https://github.com/Automan-56/Clipforge.git
-cd Clipforge
-
-# Installer en mode développement
-pip install -e .[dev]
-
-# Installer Streamlit pour l'interface (optionnel)
-pip install -e .[ui]
+# Vérifier l'installation
+clipforge doctor
 ```
 
 ## Configuration

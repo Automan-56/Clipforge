@@ -114,6 +114,11 @@ def render_clip(
     width = 1080 if not draft else 720
     height = 1920 if not draft else 1280
 
+    # Chemins relatifs pour ffmpeg (évite les problèmes sur Windows)
+    ass_rel = ass_path.relative_to(ass_path.parent.parent)
+    output_rel = output_path.relative_to(output_path.parent.parent)
+    cwd = ass_path.parent.parent
+
     # Commande ffmpeg
     cmd = [
         "ffmpeg",
@@ -125,13 +130,13 @@ def render_clip(
         "-pix_fmt", "yuv420p",
         "-movflags", "+faststart",
         "-af", "afade=t=in:st=0:d=0.1,afade=t=out:st=0:d=0.1",
-        "-vf", f"scale={width}:{height},ass={ass_path.as_posix()}",
+        "-vf", f"scale={width}:{height},ass={ass_rel}",
         *audio_params,
-        str(output_path),
+        str(output_rel),
     ]
 
     try:
-        subprocess.run(cmd, check=True, capture_output=True, text=True)
+        subprocess.run(cmd, check=True, capture_output=True, text=True, cwd=str(cwd))
         logger.info(f"Clip {clip_id} rendu avec succès")
     except subprocess.CalledProcessError as e:
         # Nettoyer le fichier partiel

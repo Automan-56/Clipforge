@@ -188,4 +188,16 @@ def load_preset(preset_name: str, presets_dir: Path) -> SubtitleStyle:
         data = tomli.load(f)
 
     style_data = data.get("style", {})
+    
+    # Vérifier si la police personnalisée existe
+    font = style_data.get("font", "Arial")
+    fontsdir = style_data.get("fontsdir")
+    if fontsdir:
+        font_path = Path(fontsdir) / f"{font}.ttf"
+        if not font_path.exists():
+            import logging
+            logging.warning(f"Police {font} introuvable, utilisation de Arial à la place")
+            style_data["font"] = "Arial"
+            style_data.pop("fontsdir", None)
+    
     return SubtitleStyle(**style_data)

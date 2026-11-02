@@ -1,6 +1,7 @@
 # Preset minimaliste - style épuré
 [style]
-font = "Arial-Bold"
+font = "Anton-Bold"
+fontsdir = "assets/fonts"
 size = 70
 primary_color = "&H00FFFFFF"
 highlight_color = "&H00FF80"
