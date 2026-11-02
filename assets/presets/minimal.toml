@@ -1,0 +1,13 @@
+# Preset minimaliste - style épuré
+[style]
+font = "Arial-Bold"
+size = 70
+primary_color = "&H00FFFFFF"
+highlight_color = "&H00FF80"
+accent_color = "&HFF8000"
+outline_color = "&H000000"
+outline_width = 4
+margin_v = 80
+words_per_line = 2
+uppercase = false
+pop_animation = false

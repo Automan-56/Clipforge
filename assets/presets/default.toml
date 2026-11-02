@@ -1,0 +1,19 @@
+# Preset par défaut - style classique karaoké
+[style]
+font = "Roboto-Bold"
+size = 72
+primary_color = "&H00FFFFFF"
+highlight_color = "&H00FFFF"
+accent_color = "&H00FF00"
+outline_color = "&H000000"
+outline_width = 6
+margin_v = 100
+words_per_line = 3
+uppercase = false
+pop_animation = true
+
+# Couleurs au format ASS &HAABBGGRR
+# primary_color: blanc
+# highlight_color: cyan
+# accent_color: vert
+# outline_color: noir

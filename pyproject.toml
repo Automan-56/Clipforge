@@ -1,0 +1,122 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel", "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clipforge"
+version = "0.1.0"
+description = "Clone open-source d'Opus Clip : transformation de vidéos longues en clips verticaux 9:16"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "clipforge contributors"}
+]
+keywords = ["video", "clipping", "subtitles", "llm", "whisper"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    # Core
+    "pydantic>=2.0.0,<3.0.0",
+    "typer>=0.9.0,<1.0.0",
+    "pydantic-settings>=2.0.0,<3.0.0",
+    "tomli>=2.0.0,<3.0.0",
+
+    # Audio/Video
+    "ffmpeg-python>=0.2.0,<1.0.0",
+    "yt-dlp>=2025.1.1",
+
+    # Transcription
+    "faster-whisper>=1.0.0",
+
+    # Vision/Cropping
+    "mediapipe>=0.10.0,<0.11.0",  # API stable dans cette fourchette
+    "opencv-python>=4.8.0,<5.0.0",
+    "numpy",
+    "pillow",
+
+    # LLM Integration
+    "google-generativeai>=0.3.0,<1.0.0",
+    "httpx>=0.25.0,<1.0.0",
+
+    # Subtitles
+    "pysrt>=1.1.2,<2.0.0",
+
+    # Utilities
+    "python-dotenv>=1.0.0,<2.0.0",
+    "tqdm>=4.66.0,<5.0.0",
+]
+
+[project.optional-dependencies]
+whisper = [
+    "faster-whisper>=1.0.0",
+]
+dev = [
+    "pytest>=7.4.0,<9.0.0",
+    "pytest-cov>=4.1.0,<6.0.0",
+    "pytest-mock>=3.12.0,<4.0.0",
+    "ruff>=0.1.0,<1.0.0",
+    "mypy>=1.7.0,<2.0.0",
+    "types-requests>=2.31.0,<3.0.0",
+]
+
+ui = [
+    "streamlit>=1.28.0,<2.0.0",
+]
+
+[project.scripts]
+clipforge = "clipforge.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Automan-056/Clipforge"
+Repository = "https://github.com/Automan-056/Clipforge"
+Issues = "https://github.com/Automan-056/Clipforge/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+lint.select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+lint.ignore = [
+    "E501",  # line too long (handled by formatter)
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+    "UP042",  # StrEnum vs str+Enum (keep str+Enum for JSON compatibility)
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+markers = [
+    "integration: marks tests as integration tests (requires network/API)",
+]
