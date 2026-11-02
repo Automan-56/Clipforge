@@ -285,3 +285,13 @@
 **Alternative écartée** : Tenter de corriger le chemin ffmpeg de manière complexe (risque d'introduire d'autres bugs).
 
 **Impact** : Les tests unitaires passent sur toutes les plateformes, les tests d'intégration passent sur Linux/macOS, mais sont skip sur Windows. Le test manuel valide le fonctionnement sur Windows.
+
+### Dépendance torch pour faster-whisper
+
+**Contexte** : faster-whisper nécessite torch pour la détection automatique de device (cuda vs cpu), mais torch n'était pas explicitement dans les dépendances.
+
+**Décision** : Ajouter torch>=2.0.0 aux dépendances principales.
+
+**Alternative écartée** : Laisser l'utilisateur installer torch manuellement (non pratique).
+
+**Impact** : L'installation automatique de toutes les dépendances nécessaires pour faster-whisper.
